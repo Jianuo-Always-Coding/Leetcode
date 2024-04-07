@@ -1,4 +1,35 @@
 # Leetcode
+## 311 Sparce matrix multiplication
+
+Method 1: 使用暴力求法
+
+```java
+public class Solution {
+    public int[][] multiply(int[][] A, int[][] B) {
+        int m = A.length;
+        int n = A[0].length;
+        int l = B[0].length;
+        int[][] C = new int[m][l];
+
+        // 遍历A中的每一个元素
+        for(int i=0; i< m; i++){
+            for(int j = 0; j< n; j++){
+                // 如果不等于0
+                if(A[i][j] != 0){
+                    // 那么遍历B矩阵在以A矩阵的列为行的所有列
+                    // 将结果加到result中
+                    for(int k = 0; k<l; k++)
+                        C[i][k] += A[i][j]* B[j][k];
+                }
+            }
+        }
+        return C;
+    }
+}
+```
+
+Method 2: 使用 HashMap 记录一个矩阵中的元素，遍历另一个矩阵，如果另一个矩阵中的元素不为 0，那么去 map 中查找
+
 
 ## 1944 Number of Visible People in a Queue
 单调栈，维护一个单调递减的栈，不是的话就弹出计数，注意是否能把栈全部弹空，能弹空的话，弹出的数量就是当前点能看到的人的数量，不是的话还要加一，加上最后一个人，因为最后一个人一定能看到
@@ -86,6 +117,25 @@ dp easy,初始化条件要记好
 int prev2 = nums[0];
 int prev1 = Math.max(nums[0], nums[1]);
 ```
+
+
+## 394 Decode String
+不断加入sb中，直到找到"]",不断向前，将计算好的字符串加入sb中
+
+## 475 Heaters
+对 house 和 heater都sort，只需要比较第一个和最后一个。
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Notice
 ## DP
