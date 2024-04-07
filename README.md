@@ -147,3 +147,5 @@ int prev1 = Math.max(nums[0], nums[1]);
 
 ## 695 Max Area of Island
 
+## 721 Accounts Merge
+类似于找island 的思想，用boolean array记录是否找到过，记住用set记录内容的时候，不是空才能加入。
