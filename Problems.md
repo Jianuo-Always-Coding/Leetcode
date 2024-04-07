@@ -749,7 +749,7 @@ https://leetcode.com/problems/number-of-visible-people-in-a-queue/
 P1：
 22. Generate Parentheses
 https://leetcode.com/problems/generate-parentheses/
-class Solution {
+0class Solution {
     public List<String> generateParenthesis(int n) {
         // for each level, add left or right
         List<String> result = new ArrayList<>();

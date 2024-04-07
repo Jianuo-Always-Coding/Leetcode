@@ -1,4 +1,10 @@
-# Leetcode
+# Notice
+
+## DP
+
+1. 初始化
+2. Induction rule
+3. String 类型 offline + 1 ，两个 String 用二维 DP
 
 ## 311 Sparce matrix multiplication
 
@@ -141,10 +147,3 @@ int prev1 = Math.max(nums[0], nums[1]);
 
 ## 695 Max Area of Island
 
-# Notice
-
-## DP
-
-1. 初始化
-2. Induction rule
-3. String 类型 offline + 1 ，两个 String 用二维 DP
