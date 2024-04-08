@@ -6,6 +6,7 @@
 2. Induction rule
 3. String 类型 offline + 1 ，两个 String 用二维 DP
 
+<mark>212,399,437,486</mark>
 ## 311 Sparce matrix multiplication
 
 Method 1: 使用暴力求法
