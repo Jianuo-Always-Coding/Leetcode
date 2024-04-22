@@ -1,30 +1,26 @@
-
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-
-        List<int[]> merged = new ArrayList<>();
-        int i = 0;
-        int n = intervals.length;
-
-        while (i < n && intervals[i][1] < newInterval[0]) {
-            merged.add(intervals[i]);
-            i++;
-        }
-
-        while (i < n && intervals[i][0] <= newInterval[1]) {
-            newInterval[0] = Math.min(intervals[i][0], newInterval[0]);
-            newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
-            i++;
-        }
-
-        merged.add(newInterval);  // Insert the merged interval
-
-        while (i < n) {
-            merged.add(intervals[i]);
-            i++;
-        }
-
-        return merged.toArray(new int[merged.size()][]);
+        List<int[]> merge = new ArrayList<>();
         
+        int n = intervals.length;
+        int index = 0;
+
+        while (index < n && intervals[index][1] < newInterval[0]) {
+            merge.add(intervals[index]);
+            index++;
+        }
+
+        while (index < n && intervals[index][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(newInterval[0], intervals[index][0]);
+            newInterval[1] = Math.max(newInterval[1], intervals[index][1]);
+            index++;
+        }
+        merge.add(newInterval);
+        while (index < n) {
+            merge.add(intervals[index]);
+            index++;
+        }
+        return merge.toArray(new int[merge.size()][]);
+
     }
 }
