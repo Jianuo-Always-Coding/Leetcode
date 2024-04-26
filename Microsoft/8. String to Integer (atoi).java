@@ -1,40 +1,44 @@
 class Solution {
     public int myAtoi(String s) {
-        long ans = 0; //存在超界 用long，加完判断判断
-        boolean negative = false;
-        boolean digitRead = false;
-        boolean sign = false;
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            if (ch == ' ') {
-                continue;
-            }
-            // 多个加减号只要第一个
-            if (ch == '+' || ch == '-') {
-                if (sign) {
-                    break;
-                }
-                if (ch == '-') {
-                    negative = true;
-                }
-                sign = true;
-                continue;
-            }
-            if (!Character.isDigit(ch)) {
-                break;
-            }
-            ans = ans * 10 + ch - '0';
-            // 如果负数的话是max_value + 1 但是的话就符合条件了
-            if (ans > Integer.MAX_VALUE) {
-                if (negative) {
+        int n = s.length();
+        int i = 0;
+        int sign = 1;
+
+        // remove space
+        while(i<n && s.charAt(i)==' ') {
+            i++;
+        }
+
+        // find sign
+        if (i>=n) {
+            return 0;
+        }
+        if (s.charAt(i)=='-') {
+            sign = -1;
+        }
+        if (s.charAt(i)=='+' || s.charAt(i)=='-') {
+            i++;
+        }
+        // 会有多个符号吗
+
+        if (i>=n) {
+            return 0;
+        }
+
+        // find val
+        int num = 0;
+        while (i < n && Character.isDigit(s.charAt(i))) {
+            int x = s.charAt(i) - '0';
+            if (num > Integer.MAX_VALUE / 10 || (num == Integer.MAX_VALUE && x > Integer.MAX_VALUE % 10)) {
+                if (sign == 1) {
+                    return Integer.MAX_VALUE;
+                } else {
                     return Integer.MIN_VALUE;
                 }
-                return Integer.MAX_VALUE;
             }
+            num = num * 10 + x;
+            i++;
         }
-        if (negative) {
-            ans = -ans;
-        }
-        return (int)ans;
+        return num*sign;
     }
 }
