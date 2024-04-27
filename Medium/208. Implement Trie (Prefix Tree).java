@@ -1,19 +1,24 @@
 class Trie {
 
+    // 定义node class
     public class TrieNode {
         TrieNode[] children;
-        boolean isWord;
+        boolean isWord; // 是不是word
 
         public TrieNode() {
             children = new TrieNode[26];
             isWord = false;
         }
     }
+
+
     TrieNode root;
+    // 初始化 constructor
     public Trie() {
         root = new TrieNode();
     }
     
+    // 插入，往下找，有路径就往下没路径就新建，最后把isword更新为true
     public void insert(String word) {
         TrieNode node = root;
         for (int i = 0; i < word.length(); i++) {
@@ -25,6 +30,7 @@ class Trie {
         node.isWord = true;
     }
     
+    // 能查完到最后一个看看isword，没路径没查完直接为false
     public boolean search(String word) {
         TrieNode node = root;
         for (int i = 0; i < word.length(); i++){
@@ -36,6 +42,7 @@ class Trie {
         return node.isWord;
     }
     
+    // 有没有路径，逻辑和serch一样
     public boolean startsWith(String prefix) {
         TrieNode node = root;
         for (int i = 0; i < prefix.length(); i++){
