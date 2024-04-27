@@ -10,8 +10,11 @@ class Solution {
         if (r1 > r2 || c1 > c2) {
             return ;
         }
-        // base case
-        if (r1 == r2) {
+        // base case 长宽谁大不一定
+
+        while (r1 <= r2 && c1 <= c2) {
+            // 只有一行
+            if (r1 == r2) {
             for (int c = c1; c <= c2; c++) {
                 result.add(matrix[r1][c]);
                 
@@ -19,6 +22,7 @@ class Solution {
             return ;
         }
 
+        // 只有一列
         if (c1 == c2) {
             for (int r = r1; r <= r2; r++) {
                 result.add(matrix[r][c1]);
@@ -26,9 +30,11 @@ class Solution {
             return ;
         }
 
+        // 旋转打印
         for (int c = c1; c < c2; c++) {
             result.add(matrix[r1][c]);
         }
+        
 
         for (int r = r1; r < r2; r++) {
             result.add(matrix[r][c2]);
@@ -41,6 +47,11 @@ class Solution {
         for (int r = r2; r > r1; r--) {
             result.add(matrix[r][c1]);
         }
-        printNode(matrix, r1 +1, c1 + 1, r2 - 1, c2 - 1, result);
+        r1++;
+        r2--;
+        c1++;
+        c2--;
+        }
+        
     }
 }
