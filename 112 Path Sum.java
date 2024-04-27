@@ -19,14 +19,14 @@ class Solution {
         if (root == null) {
             return false;
         }
-        boolean[] seen = new boolean[1];
+        boolean[] seen = new boolean[1]; // 记录结果
         helper(root, seen, targetSum, 0);
         return seen[0];
     }
 
     private void helper(TreeNode root, boolean[] seen, int targetSum, int sum) {
         if (seen[0]) {
-            return ;
+            return ; // 找到了就return
         }
         // base case
         if (root.left == null && root.right == null) {
@@ -35,6 +35,7 @@ class Solution {
             }
             return ;
         }
+        // 有左往左，有右往右
         if (root.left != null) {
             helper(root.left, seen, targetSum, sum + root.val);
         }
