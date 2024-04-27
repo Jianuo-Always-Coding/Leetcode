@@ -8,6 +8,7 @@ class Solution {
 
         while (right < nums.length) {
             sum += nums[right];
+            // 达到条件，更新结果，移动left
             while (sum >= target) {
                 result = Math.min(result, right - left + 1);
                 sum -= nums[left++];
