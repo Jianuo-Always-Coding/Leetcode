@@ -20,9 +20,7 @@ class Solution {
             if (start + word.length() <= s.length() && s.substring(start, start + word.length()).equals(word)) {
                 sb.append(word);
                 sb.append(" ");
-
                 DFS(s, wordDict, sb, start + word.length(), res);
-
                 sb.delete(sb.length() - word.length() - 1, sb.length());
             }
         }
