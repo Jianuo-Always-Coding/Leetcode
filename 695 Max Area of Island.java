@@ -1,48 +1,23 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
 class Solution {
-    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        Queue<TreeNode> q = new ArrayDeque<>();
-        q.offer(root);
+    int[][] dirs = {{1,0},{-1,0},{0,1},{0,-1}};
+    public int maxAreaOfIsland(int[][] grid) {
+        int res = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == 1) {
+                    res = Math.max(res, dfs(grid, i, j));
+                }
 
-        while (!q.isEmpty()) {
-            TreeNode cur = q.poll();
-            if (cur.val == subRoot.val && isSame(cur, subRoot)) {
-                return true;
-            }
-
-            if (cur.left != null) {
-                q.offer(cur.left);
-            }
-            if (cur.right != null) {
-                q.offer(cur.right);
             }
         }
-        return false;
+        return res;
     }
 
-    private boolean isSame(TreeNode t1, TreeNode t2) {
-        // base case
-        if (t1 == null && t2 == null) {
-            return true;
-        } else if (t1 == null || t2 == null) {
-            return false;
-        } else if (t1.val != t2.val) {
-            return false;
+    private int dfs(int[][] grid, int x, int y) {
+        if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length || grid[x][y] != 1) {
+            return 0;
         }
-        return isSame(t1.left, t2.left) && isSame(t1.right, t2.right);
+        grid[x][y] = 0;
+        return 1 + dfs(grid, x + 1, y) + dfs(grid, x - 1, y) + dfs(grid, x, y - 1) + dfs(grid, x, y + 1);
     }
 }
