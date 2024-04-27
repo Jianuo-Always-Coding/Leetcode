@@ -6,14 +6,18 @@ class Solution {
         }
 
         char[] array = s.toCharArray();
+        // 总体reverse一下
         reverse(array, 0, s.length() - 1);
         int index = 0;
         int n = array.length;
+        // 分别对每一个单词reverse，但是不确定其中有多少个空格
         while (index < array.length) {
+            // 找到第一个不是空格的
             while (index < array.length && array[index] == ' ') {
                 index++;
             }
-            int start = index++;
+            int start = index; // start 是第一个不是空格的
+            // index是下一个空格或者边界index + 1
             while (index < array.length && array[index] != ' ') {
                 index++;
             }
@@ -23,6 +27,7 @@ class Solution {
         return simplyString(array);
     }
 
+    // 只能保留一个空格
     private String simplyString(char[] array) {
         int index = 0;
         boolean seenSpace = true;
