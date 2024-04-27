@@ -17,7 +17,7 @@ class Solution {
                 matrix[i][right] = temp;
             }
             left++;
-            right--;s
+            right--;
         }
         return;
     }
