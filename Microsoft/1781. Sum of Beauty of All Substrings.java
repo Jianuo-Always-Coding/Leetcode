@@ -1,0 +1,30 @@
+class Solution {
+    public int beautySum(String s) {
+        int res = 0;
+        // i为起始位置
+        for (int i = 0; i < s.length(); i++) {
+            int fr[] = new int[26];
+            // 记录字母出现次数
+            for (int j = i; j < s.length(); j++) {
+                fr[s.charAt(j) - 'a']++;
+                res += solve(fr); // 计算美丽度
+            }
+        }
+        return res;
+    }
+
+    public int solve(int frq[]) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        // 找到最大值和最小值
+        for (int i = 0; i < 26; i++) {
+            if (frq[i] == 0) {
+                continue;
+            }
+
+            min = Math.min(min, frq[i]);
+            max = Math.max(max, frq[i]);
+        }
+        return max - min;
+    }
+}
