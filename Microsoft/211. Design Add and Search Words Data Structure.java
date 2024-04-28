@@ -24,6 +24,8 @@ class WordDictionary {
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             if (ch == '.') {
+                // 需要遍历数组中所有元素，找到就是true
+                // 没找到就是false
                 for (TrieNode child : node.children.values()) {
                     if (searchWord(word.substring(i + 1), child)) {
                         return true;
