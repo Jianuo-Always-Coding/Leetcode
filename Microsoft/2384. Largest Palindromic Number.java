@@ -25,6 +25,7 @@ class Solution {
 
         // 构造完整的回文数
         StringBuilder palindrome = new StringBuilder(leftHalf);
+        // 如果中间有数字加入
         if (oddLetter != ' ') {
             palindrome.append(oddLetter);
         }
