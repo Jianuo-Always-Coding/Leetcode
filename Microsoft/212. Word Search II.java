@@ -14,7 +14,7 @@ class Solution {
         int cols = board[0].length;
         boolean[][] visited = new boolean[rows][cols];
         StringBuilder sb = new StringBuilder();
-
+367. Valid Perfect Square
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 helper(board, i, j, root, sb, res, visited);
