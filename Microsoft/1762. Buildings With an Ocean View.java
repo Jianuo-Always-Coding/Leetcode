@@ -9,7 +9,7 @@ class Solution {
             max = Math.max(max, heights[i]);
         }
         // 整理结果
-        int[] result = new int[list.size()];
+        int[] result = new int[list.size()];2239. Find Closest Number to Zero2239. Find Closest Number to Zero
         for(int i=0; i<list.size(); i++)
             result[i] = list.get(list.size()-1-i);
         return result;
