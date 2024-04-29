@@ -22,7 +22,7 @@ class Solution {
         int min = 0;
         int max = 0;
 
-        q.offer(new NodeAndCol(root, 0));
+        q.offer(new NodeAndCol(root, 0)); // root的col设置为0
         while(!q.isEmpty()) {
             NodeAndCol cur = q.poll();
             int col = cur.col;
