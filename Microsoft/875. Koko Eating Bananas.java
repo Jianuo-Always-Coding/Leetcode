@@ -1,5 +1,7 @@
 class Solution {
     // 求解最小吃香蕉速度
+    // 一定可以吃完所有香蕉吗
+    // h < n???
     public int minEatingSpeed(int[] piles, int h) {
         // 找到香蕉堆中最大的数量
         int max = 0;
