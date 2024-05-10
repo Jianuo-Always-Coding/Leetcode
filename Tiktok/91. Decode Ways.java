@@ -17,6 +17,7 @@ class Solution {
         dp[0] = 1;
         dp[1] = 1;
         for (int i = 2; i <= s.length(); i++) {
+            // 需要考虑一个字符的时候是不是0，两个字符的时候大不大于等于10和小于等于26
             int val = (s.charAt(i - 2) - '0') * 10 + s.charAt(i - 1) - '0';
             if (val >= 10 && val <= 26) {
                 dp[i] += dp[i - 2]; 
