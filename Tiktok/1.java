@@ -1,18 +1,27 @@
 class Solution {
     public int minInsertions(String s) {
-        int l = 0, r = 0;
-        for (char c : s.toCharArray()) {
-            if (c == '(') {
-                r += 2; // 需要的右括号加2
-            } else {
-                r -= 1;
-                // 没有右括号，需要加一个左括号和一个右括号
-                if (r == -1) {
-                    r = 1;
-                    l += 1;
+        int left = 0, res=0;
+
+        for(int i=0;i<s.length();i++){
+            
+            if(s.charAt(i) == '(') left ++;
+            else if(i == s.length() - 1 || s.charAt(i + 1) == '(') {
+                if(left > 0){
+                    res++;
+                    left--;
                 }
+                else {
+                    res+=2;
+                }
+            }else{
+                if(left>0){
+                    left--;
+                }else{
+                    res++;
+                }
+                i++;
             }
         }
-        return l + r;
+        return res+= left*2;
     }
 }
